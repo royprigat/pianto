@@ -51,7 +51,7 @@
         <div class="row">
             <div id="sidenav" class="col-md-4 bg-light">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6" style="padding-right: 0px;">
                         <div class="title">Library</div>
                         <ul class="nav flex-column">
                             <li class="nav-item">
@@ -89,18 +89,22 @@
 
                         <div id="videos">
                             <div class="poster-wrapper">
-                                <img src="./posters/interstellar.jpg" class="poster" alt="">
+                                <img src="./posters/interstellar.jpg" class="poster" alt="interstellar">
                                 <div class="overlay">
                                     Interstellar
                                 </div>
                             </div>
                             <div class="poster-wrapper">
-                                <img src="./posters/Imitation.jpg" class="poster" alt="">
+                                <img src="./posters/Imitation.jpg" class="poster" alt="imitation">
                                 <div class="overlay">Imitation Game</div>
                             </div>
-                            <div class="poster-wrapper" style="margin-bottom: 0px;">
-                                <img src="./posters/darknight.jpg" class="poster" alt="">
+                            <div class="poster-wrapper">
+                                <img src="./posters/darknight.jpg" class="poster" alt="darknight">
                                 <div class="overlay">The Dark Night</div>
+                            </div>
+                            <div class="poster-wrapper" style="margin-bottom: 0px;">
+                                <img src="https://i.pinimg.com/originals/34/11/7f/34117ffaf8cd93ed3387ad22fec6bf24.jpg" class="poster" alt="darknight">
+                                <div class="overlay">Gladiator</div>
                             </div>
                         </div>
                     </div>
@@ -111,7 +115,18 @@
                 </div>
             </div>
             <div id="content" class="col-md-8 bg-light">
-
+                <div id="main-player">
+                    <video id="video" src="./videos/interstellar.mp4"></video>
+                </div>
+                <!-- <div class="switch switch--vertical switch--no-label">
+                    <input id="radio-e" type="radio" name="fourth-switch" checked="checked" />
+                    <label for="radio-g">Off</label>
+                    <input id="radio-f" type="radio" name="fourth-switch" />
+                    <label for="radio-h">On</label>
+                    <span class="toggle-outside">
+                        <span class="toggle-inside"></span>
+                    </span>
+                </div> -->
             </div>
         </div>
     </div>
@@ -122,6 +137,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/muuri/0.5.3/muuri.min.js"></script> -->
     <!-- <script src="./js/script.js"></script> -->
     <script src="./js/active.js"></script>
+    <script src="./js/video-player.js"></script>
 
     <!-- Icons -->
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
