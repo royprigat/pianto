@@ -11,13 +11,9 @@
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/jquery-ui.min.css">
     <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="./css/sidebar.css">
-    <link rel="stylesheet" href="./css/content.css">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,700|Roboto:400,500,700" rel="stylesheet">
-    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
-        crossorigin="anonymous"></script>
 
 </head>
 
@@ -50,43 +46,72 @@
     </nav>
 
 
+
     <div class="container-fluid">
         <div class="row">
-            <nav id="sidebar" class="col-md-5 bg-light">
+            <div id="sidenav" class="col-md-4 bg-light">
                 <div class="row">
-                    <div id="navigation" class="col-md-6">
+                    <div class="col-md-6">
                         <div class="title">Library</div>
-                        <div id="menu">
-                            <ul>
-                                <li>
-                                    <div class="menu-item selected">All Videos</div>
-                                </li>
-                                <li>
-                                    <div class="menu-item">Favorites</div>
-                                </li>
-                            </ul>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">
+                                    <span data-feather="layers"></span>
+                                    All Videos
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <span data-feather="star"></span>
+                                    Favorites
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-6" style="padding-right: 25px;">
+
+                        <div id="options">
+                            <input id="search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <div id="filter" class="btn-group">
+                                <button class="btn btn-secondary btn-sm dropdown-toggle no-background" type="button" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    Most Views
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a href="#">
+                                        <span data-feather="star"></span>
+                                        Favorites
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="videos">
+                            <div class="poster-wrapper">
+                                <img src="./posters/interstellar.jpg" class="poster" alt="">
+                                <div class="overlay">
+                                    Interstellar
+                                </div>
+                            </div>
+                            <div class="poster-wrapper">
+                                <img src="./posters/Imitation.jpg" class="poster" alt="">
+                                <div class="overlay">Imitation Game</div>
+                            </div>
+                            <div class="poster-wrapper" style="margin-bottom: 0px;">
+                                <img src="./posters/darknight.jpg" class="poster" alt="">
+                                <div class="overlay">The Dark Night</div>
+                            </div>
                         </div>
                     </div>
-                    <div id="videos" class="col-md-6">
-                        <div id="video-filters" class="row">
 
-                        </div>
-                        <div id="video-browse" class="row">
-                            <!-- <img class="poster" src="./posters/interstellar.jpg" alt="">
-                            <img class="poster" src="./posters/Imitation.jpg" alt="">
-                            <img class="poster" src="./posters/darknight.jpg" alt="">
-                            <img class="poster" src="./posters/interstellar.jpg" alt="">
-                            <img class="poster" src="./posters/Imitation.jpg" alt="">
-                            <img class="poster" src="./posters/darknight.jpg" alt=""> -->
-                        </div>
+                    <div>
+                        <button id="add_video" type="button" class="btn btn-outline-primary">Add Video</button>
                     </div>
                 </div>
-            </nav>
+            </div>
+            <div id="content" class="col-md-8 bg-light">
 
-            <div id="content" class="col-md-7 bg-light">
-                <p>
-                    Hello
-                </p>
             </div>
         </div>
     </div>
@@ -97,6 +122,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/muuri/0.5.3/muuri.min.js"></script> -->
     <!-- <script src="./js/script.js"></script> -->
     <script src="./js/active.js"></script>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+        feather.replace()
+    </script>
 
 </body>
 

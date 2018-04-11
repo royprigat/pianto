@@ -3,13 +3,20 @@
     --main-dark-second: #0081C6;
     --main-light: #46CDCF;
     --main-light-second: #ABEDD8;
-  }
-  
+    --general-blue: #007bff;
+}
 
 html,
 body {
     font-family: 'Roboto', sans-serif;
     font-size: .875rem;
+    height: 100%;
+}
+
+.feather {
+    width: 16px;
+    height: 16px;
+    vertical-align: text-bottom;
 }
 
 #navbar {
@@ -35,28 +42,131 @@ body {
     top: 10px;
 }
 
-.active {
-    border-bottom: 2px solid var(--main-light);
+.navbar .active {
+    border-bottom: 2px solid var(--general-blue);
     font-weight: 500;
     padding-bottom: 3px;
 }
 
-#sidebar {
-    position: absolute;
-    top: 0;
-    bottom: 0;
+#sidenav {
+    height: 100%;
+    position: fixed;
+    top: 50px;
     left: 0;
-    z-index: 100;
-    padding-top: 80px;
-    box-shadow: inset -1px 0 50px rgba(0, 0, 0, .1);
+    overflow-x: hidden;
+}
+
+#sidenav .nav-link {
+    margin-left: 10px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #333;
+}
+
+#sidenav .nav-link .feather {
+    margin-right: 4px;
+    color: #999;
+}
+
+#sidenav .nav-link.active {
+    color: #007bff;
+}
+
+#sidenav .nav-link:hover .feather,
+#sidenav .nav-link.active .feather {
+    color: inherit;
+}
+
+.title {
+    font-size: 30px;
+    padding-left: 20px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+#add_video {
+    position: absolute;
+    left: 35px;
+    bottom: 80px;
+}
+
+#options {
+    height: 110px;
+}
+
+#search {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    width: 70%;
+}
+
+#filter {
+    position: absolute;
+    top: 80px;
+    left: 15px;
+    width: 75%;
+}
+
+.no-background {
+    background: none;
+    color: black;
+    border: none;
+}
+
+#videos {
+    height: calc(100vh - 170px);
+    overflow-y: scroll;
+}
+
+.poster-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 15px;
+}
+
+.poster-wrapper:hover {
+    cursor: pointer;
+}
+
+.poster-wrapper:hover .overlay {
+    opacity: 1;
+}
+
+.poster {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 15px;
+    /* Black see-through */
+    color: #f1f1f1;
+    width: 100%;
+    transition: .5s ease;
+    opacity: 0;
+    color: white;
+    font-size: 16px;
+    padding-left: 15px;
+    text-align: left;
+}
+
+.selected {
+    border: 4px solid var(--general-blue);
 }
 
 #content {
-    position: absolute;
-    top: 0;
-    bottom: 0;
+    height: 100%;
+    position: fixed;
+    top: 50px;
     right: 0;
-    z-index: 100;
-    padding: 0;
+    overflow-x: hidden;
+    box-shadow: -4px 0px 30px -10px grey;
 }
 
+#videos::-webkit-scrollbar {
+    width: 0 !important;
+}

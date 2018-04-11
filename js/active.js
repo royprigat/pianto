@@ -4,9 +4,15 @@ $( document ).ready(function() {
         $(this).addClass("active");
      });
 
-     $("#menu .menu-item").on("click", function(){
-        $("#menu").find(".selected").removeClass("selected");
+     $("#sidenav .nav-link").on("click", function(){
+        $("#sidenav").find(".active").removeClass("active");
+        $(this).addClass("active");
+     });
+
+     $("#videos .poster-wrapper").on("click", function(){
+        $("#videos").find(".selected").removeClass("selected");
         $(this).addClass("selected");
      });
+
 });
 
