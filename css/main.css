@@ -1,3 +1,11 @@
+:root {
+    --main-dark: #48466D;
+    --main-dark-second: #0081C6;
+    --main-light: #46CDCF;
+    --main-light-second: #ABEDD8;
+  }
+  
+
 html,
 body {
     font-family: 'Roboto', sans-serif;
@@ -5,6 +13,7 @@ body {
 }
 
 #navbar {
+    padding-bottom: 0px;
     box-shadow: 0px 1px 2px #dedede;
     font-size: 18px;
 }
@@ -15,6 +24,7 @@ body {
 
 .navbar-brand {
     margin-left: 2px;
+    margin-bottom: 5px;
 }
 
 .headerDivider {
@@ -25,57 +35,28 @@ body {
     top: 10px;
 }
 
-/*
- * Sidebar
- */
+.active {
+    border-bottom: 2px solid var(--main-light);
+    font-weight: 500;
+    padding-bottom: 3px;
+}
 
 #sidebar {
-    position: fixed;
+    position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     z-index: 100;
-    padding: 40px;
     padding-top: 80px;
     box-shadow: inset -1px 0 50px rgba(0, 0, 0, .1);
 }
 
-#navigation {
-    height: 100%;
-    font-size: 30px;
-}
-
-#videos {
-
-}
-
-#video-filters {
-    height: 100px;
-}
-
-#video-browse {
-    overflow-y: scroll;
-    max-height: 600px;
-    padding: 10px;
-}
-
-#video-browse::-webkit-scrollbar { width: 0 !important }
-
-.poster {
-    margin-bottom: 15px;
-    width: 100%;
-    height: auto;
-}
-
-.poster:hover {
-    cursor: pointer;
-}
-
 #content {
-    position: fixed;
+    position: absolute;
     top: 0;
     bottom: 0;
     right: 0;
     z-index: 100;
     padding: 0;
 }
+

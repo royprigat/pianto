@@ -11,9 +11,11 @@
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/jquery-ui.min.css">
     <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/sidebar.css">
+    <link rel="stylesheet" href="./css/content.css">
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,700|Roboto:400,500,700" rel="stylesheet">
     <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
         crossorigin="anonymous"></script>
 
@@ -53,26 +55,29 @@
             <nav id="sidebar" class="col-md-5 bg-light">
                 <div class="row">
                     <div id="navigation" class="col-md-6">
-                        Library
+                        <div class="title">Library</div>
+                        <div id="menu">
+                            <ul>
+                                <li>
+                                    <div class="menu-item selected">All Videos</div>
+                                </li>
+                                <li>
+                                    <div class="menu-item">Favorites</div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     <div id="videos" class="col-md-6">
-                        <div id="video-filters">
-                            <span class="input input--makiko">
-                                <input class="input__field input__field--makiko" type="text" id="input-16" />
-                                <label class="input__label input__label--makiko" for="input-16">
-                                    <span class="input__label-content input__label-content--makiko">Search</span>
-                                </label>
-                            </span>
+                        <div id="video-filters" class="row">
+
                         </div>
-                        <div id="video-browse">
-                            <img class="poster" src="./posters/interstellar.jpg" alt="">
-                            <img class="poster" src="./posters/Imitation.jpg" alt="">
-                            <img class="poster" src="./posters/interstellar.jpg" alt="">
+                        <div id="video-browse" class="row">
+                            <!-- <img class="poster" src="./posters/interstellar.jpg" alt="">
                             <img class="poster" src="./posters/Imitation.jpg" alt="">
                             <img class="poster" src="./posters/darknight.jpg" alt="">
                             <img class="poster" src="./posters/interstellar.jpg" alt="">
-                            <img class="poster" src="./posters/darknight.jpg" alt="">
-                            <img class="poster" src="./posters/interstellar.jpg" alt="">
+                            <img class="poster" src="./posters/Imitation.jpg" alt="">
+                            <img class="poster" src="./posters/darknight.jpg" alt=""> -->
                         </div>
                     </div>
                 </div>
@@ -88,9 +93,10 @@
 
     <script src="./js/jquery-3.3.1.min.js"></script>
     <script src="./js/jquery-ui.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/muuri/0.5.3/muuri.min.js"></script>
-    <script src="./js/script.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/muuri/0.5.3/muuri.min.js"></script> -->
+    <!-- <script src="./js/script.js"></script> -->
+    <script src="./js/active.js"></script>
 
 </body>
 
