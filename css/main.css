@@ -1,353 +1,433 @@
 :root {
-    --main-dark: #48466D;
-    --main-dark-second: #0081C6;
-    --main-light: #46CDCF;
-    --main-light-second: #ABEDD8;
-    --general-blue: #007bff;
+  --main-dark: #48466D;
+  --main-dark-second: #0081C6;
+  --main-light: #46CDCF;
+  --main-light-second: #ABEDD8;
+  --general-blue: #007bff;
 }
 
 html,
 body {
-    font-family: 'Roboto', sans-serif;
-    font-size: .875rem;
-    height: 100%;
+  font-family: 'Roboto', sans-serif;
+  font-size: .875rem;
+  height: 100%;
+}
+
+*:focus {
+  outline: none !important;
 }
 
 video {
-    width: 100%;
-    height: auto;
+  width: 100%;
+  height: auto;
 }
 
 .feather {
-    width: 16px;
-    height: 16px;
-    vertical-align: text-bottom;
+  width: 16px;
+  height: 16px;
+  vertical-align: text-bottom;
 }
 
 #navbar {
-    padding-bottom: 0px;
-    box-shadow: 0px 1px 2px #dedede;
-    font-size: 18px;
+  padding-bottom: 0px;
+  box-shadow: 0px 1px 2px #dedede;
+  font-size: 18px;
 }
 
 #navbarCollapse {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
 .navbar-brand {
-    margin-left: 2px;
-    margin-bottom: 5px;
+  margin-left: 2px;
+  margin-bottom: 5px;
 }
 
 .headerDivider {
-    border-left: 1px solid #d0d0d0b6;
-    height: 35px;
-    position: absolute;
-    left: 60px;
-    top: 10px;
+  border-left: 1px solid #d0d0d0b6;
+  height: 35px;
+  position: absolute;
+  left: 60px;
+  top: 10px;
 }
 
 .navbar .active {
-    border-bottom: 2px solid var(--general-blue);
-    font-weight: 500;
-    padding-bottom: 3px;
+  border-bottom: 2px solid var(--general-blue);
+  font-weight: 500;
+  padding-bottom: 3px;
 }
 
 #sidenav {
-    height: 100%;
-    position: fixed;
-    top: 50px;
-    left: 0;
-    overflow-x: hidden;
+  height: 100%;
+  position: fixed;
+  top: 50px;
+  left: 0;
+  overflow-x: hidden;
 }
 
 #sidenav .nav-link {
-    margin-left: 10px;
-    font-weight: 500;
-    font-size: 14px;
-    color: #333;
+  margin-left: 5px;
+  font-weight: 500;
+  font-size: 14px;
+  color: #333;
 }
 
 #sidenav .nav-link .feather {
-    margin-right: 4px;
-    color: #999;
+  margin-right: 4px;
+  color: #999;
 }
 
 #sidenav .nav-link.active {
-    color: #007bff;
+  color: #007bff;
 }
 
 #sidenav .nav-link:hover .feather,
 #sidenav .nav-link.active .feather {
-    color: inherit;
+  color: inherit;
 }
 
 .title {
-    font-size: 30px;
-    padding-left: 20px;
-    margin-top: 30px;
-    margin-bottom: 15px;
+  font-size: 30px;
+  padding-left: 20px;
+  margin-top: 30px;
+  margin-bottom: 15px;
 }
 
 #add_video {
-    position: absolute;
-    left: 35px;
-    bottom: 80px;
+  position: absolute;
+  left: 35px;
+  bottom: 80px;
 }
 
 #options {
-    height: 110px;
+  height: 110px;
 }
 
 #search {
-    position: absolute;
-    top: 25px;
-    right: 25px;
-    width: 70%;
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  width: 70%;
 }
 
 #filter {
-    position: absolute;
-    top: 80px;
-    left: 15px;
-    width: 75%;
+  position: absolute;
+  top: 80px;
+  left: 15px;
+  width: 75%;
 }
 
 .no-background {
-    background: none;
-    color: black;
-    border: none;
+  background: none;
+  color: black;
+  border: none;
 }
 
 #videos {
-    height: calc(100vh - 170px);
-    overflow-y: scroll;
+  height: calc(100vh - 170px);
+  overflow-y: scroll;
 }
 
 .poster-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 300px;
-    margin-bottom: 15px;
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 15px;
 }
 
 .poster-wrapper:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .poster-wrapper:hover .overlay {
-    opacity: 1;
+  opacity: 1;
 }
 
 .poster {
-    display: block;
-    width: 100%;
-    height: auto;
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .overlay {
-    position: absolute;
-    bottom: 10px;
-    /* Black see-through */
-    color: #f1f1f1;
-    width: 100%;
-    transition: .5s ease;
-    opacity: 0;
-    color: white;
-    font-size: 16px;
-    padding-left: 15px;
-    text-align: left;
+  position: absolute;
+  bottom: 10px;
+  /* Black see-through */
+  color: #f1f1f1;
+  width: 100%;
+  transition: .5s ease;
+  opacity: 0;
+  color: white;
+  font-size: 16px;
+  padding-left: 15px;
+  text-align: left;
 }
 
 .selected {
-    border: 4px solid var(--general-blue);
+  outline: 5px solid var(--general-blue);
+  outline-offset: -5px;
 }
 
 #content {
-    height: 100%;
-    padding: 0px;
-    padding-right: 50px;
-    position: fixed;
-    top: 50px;
-    right: 0;
-    overflow-x: hidden;
-    box-shadow: -4px 0px 30px -10px grey;
+  height: 100%;
+  padding: 0px;
+  padding-right: 80px;
+  position: fixed;
+  top: 50px;
+  right: 0;
+  overflow-x: hidden;
+  box-shadow: -4px 0px 30px -10px grey;
 }
 
 #videos::-webkit-scrollbar {
-    width: 0 !important;
+  width: 0 !important;
+}
+
+#mask {
+  position: absolute;
+  bottom: -14px;
+  width: 100%;
+  height: 40px;
+  background: #f8f9fa;
+  z-index: 10;
 }
 
 video::-webkit-media-controls-panel {
-    display: flex !important;
-    opacity: 1 !important;
+  /* display: flex !important;
+    opacity: 1 !important; */
 }
 
-/* Switch */
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
 
-.switch {
-    margin: 4rem auto;
+.video-wrapper .video-container {
+  position: absolute;
+  display: none;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.video-wrapper .video-container video {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: block;
+  z-index: 1;
+}
+
+.video-wrapper .video-container.active {
+  display: block;
+  position: relative;
+  z-index: 2;
+}
+
+.controls {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  z-index: 5;
+  background: white;
+}
+
+.video-wrapper .overlay {
+  position: absolute;
+  z-index: 3;
+  opacity: 0.7;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/123941/overlay.png');
+  background-repeat: repeat;
+}
+
+.progress-bar {
+  position: absolute;
+  bottom: 26px;
+  left: 0px;
+  width: 100%;
+  height: 10px;
+  background: rgba(25, 25, 25, 0.85);
+  z-index: 10;
+  opacity: 1;
+  cursor: pointer;
+  border-radius: 0px;
+  -webkit-transition: width linear 700ms, height linear 300ms;
+  -moz-transition: width linear 700ms, height linear 300ms;
+  -o-transition: width linear 700ms, height linear 300ms;
+  transition: width linear 700ms, height linear 300ms;
+}
+
+.progress-bar.active {
+  opacity: 1;
+}
+
+.progress-bar.expanded {
+  height: 40px;
+}
+
+.progress-bar .progress {
+  background: var(--general-blue);
+  height: 100%;
+  position: absolute;
+  width: 0%;
+  top: 0px;
+  left: 0px;
+  opacity: 1;
+  z-index: 2;
+  border-radius: 0px;
+}
+
+.progress-bar .buffer {
+  background: #333;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 0%;
+  z-index: 1;
+}
+
+.progress-bar .progress .progress-inner {
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  opacity: 0;
+  right: 0px;
+  overflow: hidden;
+  color: #fff;
+  -moz-transition: all 300ms linear;
+}
+
+.progress-bar.expanded .progress .progress-inner {
+  opacity: 1;
+}
+
+.progress-bar.expanded .progress .progress-inner span {
+  display: inline-block;
+  margin-right: 25px;
+  line-height: 30px;
+  height: 30px;
+}
+
+.progress-value {
+  font-size: 20px;
+  margin-top: 5px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -o-user-select: none;
+}
+
+/* Controls */
+
+.control-btn {
+  width: 50px;
+  height: 34px;
+  z-index: 10;
+  background: var(--general-blue);
+  border-radius: 3px;
+  padding-top: 9px;
+  text-align: center;
+  color: white;
+  transition: background 0.3s;
+}
+
+.set {
+  background: rgb(25, 66, 142);
+}
+
+#play_pause {
+  position: absolute;
+  top: 20px;
+  right: 15px;
+}
+
+#speed-1 {
+  position: absolute;
+  bottom: 165px;
+  right: -65px;
+}
+
+#speed-2 {
+  position: absolute;
+  bottom: 125px;
+  right: -65px;
+}
+
+#speed-3 {
+  position: absolute;
+  bottom: 85px;
+  right: -65px;
+}
+
+#speed-4 {
+  position: absolute;
+  bottom: 45px;
+  right: -65px;
+}
+
+.control-btn:hover {
+  cursor: pointer;
+  background: rgb(34, 89, 193);
+  transition: background 0.3s;
+}
+
+#full_screen {
+  position: absolute;
+  top: 60px;
+  right: 15px;
+  width: 50px;
+  z-index: 1;
+}
+
+#red-dot {
+  display: none;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 20px;
+  height: 20px;
+  z-index: 10;
+  background: radial-gradient(circle, rgb(181, 0, 0), rgb(208, 0, 0), rgb(255, 34, 34));;
+  border-radius: 20px;
+  opacity: 0;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 90%;
   }
-  /* main styles */
-  .switch {
-    width: 24rem;
+  .video-wrapper .fallback-container.active {
+    padding-bottom: 0px;
+    height: auto;
+  }
+  .video-wrapper .fallback-container .caption {
     position: relative;
   }
-  .switch input {
-    position: absolute;
-    top: 0;
-    z-index: 2;
-    opacity: 0;
-    cursor: pointer;
+  .video-wrapper .caption {
+    padding: 10px;
+    top: 0px;
+    left: 0px;
   }
-  .switch input:checked {
-    z-index: 1;
+  .video-wrapper .caption h1 {
+    font-size: 140%;
+    margin: 0px 0px 15px 0px;
   }
-  .switch input:checked + label {
-    opacity: 1;
-    cursor: default;
+  .video-wrapper .caption h2 {
+    font-size: 120%;
+    margin: 0px 0px 12px 0px;
   }
-  .switch input:not(:checked) + label:hover {
-    opacity: 0.5;
+  .video-wrapper .caption h3 {
+    font-size: 110%;
+    margin: 0px 0px 17px 0px;
   }
-  .switch label {
-    color: #fff;
-    opacity: 0.33;
-    transition: opacity 0.25s ease;
-    cursor: pointer;
-  }
-  .switch .toggle-outside {
-    height: 100%;
-    border-radius: 2rem;
-    padding: 0.25rem;
-    overflow: hidden;
-    transition: 0.25s ease all;
-  }
-  .switch .toggle-inside {
-    border-radius: 5rem;
-    background: #4a4a4a;
-    position: absolute;
-    transition: 0.25s ease all;
-  }
-  .switch--horizontal {
-    width: 18rem;
-    height: 3rem;
-    margin: 0 auto;
-    font-size: 0;
-    margin-bottom: 1rem;
-  }
-  .switch--horizontal input {
-    height: 3rem;
-    width: 6rem;
-    left: 6rem;
-    margin: 0;
-  }
-  .switch--horizontal label {
-    font-size: 1.5rem;
-    line-height: 3rem;
-    display: inline-block;
-    width: 6rem;
-    height: 100%;
-    margin: 0;
-    text-align: center;
-  }
-  .switch--horizontal label:last-of-type {
-    margin-left: 6rem;
-  }
-  .switch--horizontal .toggle-outside {
-    background: #fff;
-    position: absolute;
-    width: 6rem;
-    left: 6rem;
-  }
-  .switch--horizontal .toggle-inside {
-    height: 2.5rem;
-    width: 2.5rem;
-  }
-  .switch--horizontal input:checked ~ .toggle-outside .toggle-inside {
-    left: 0.25rem;
-  }
-  .switch--horizontal input ~ input:checked ~ .toggle-outside .toggle-inside {
-    left: 3.25rem;
-  }
-  .switch--vertical {
-    width: 12rem;
-    height: 6rem;
-  }
-  .switch--vertical input {
-    height: 100%;
-    width: 3rem;
-    right: 0;
-    margin: 0;
-  }
-  .switch--vertical label {
-    font-size: 1.5rem;
-    line-height: 3rem;
-    display: block;
-    width: 8rem;
-    height: 50%;
-    margin: 0;
-    text-align: center;
-  }
-  .switch--vertical .toggle-outside {
-    background: #598eff;
-    position: absolute;
-    width: 3rem;
-    height: 100%;
-    right: 0;
-    top: 0;
-  }
-  .switch--vertical .toggle-inside {
-    height: 2.5rem;
-    left: 0.25rem;
-    top: 0.25rem;
-    width: 2.5rem;
-  }
-  .switch--vertical input:checked ~ .toggle-outside .toggle-inside {
-    top: 0.25rem;
-  }
-  .switch--vertical input ~ input:checked ~ .toggle-outside .toggle-inside {
-    top: 3.25rem;
-  }
-  .switch--no-label label {
-    width: 0;
-    height: 0;
-    visibility: hidden;
-    overflow: hidden;
-  }
-  .switch--no-label input:checked ~ .toggle-outside .toggle-inside {
-    background: rgba(138, 40, 40, 0.2);
-    border: 1px solid rgba(0,0,0,0.2);
-  }
-  .switch--no-label input ~ input:checked ~ .toggle-outside {
-    background: rgb(124, 124, 124);
-  }
-  .switch--no-label input ~ input:checked ~ .toggle-outside .toggle-inside {
-    background: #2ecc71;
-  }
-  .switch--no-label.switch--vertical {
-    width: 3rem;
-  }
-  .switch--no-label.switch--horizontal {
-    width: 6rem;
-  }
-  .switch--no-label.switch--horizontal input,
-  .switch--no-label.switch--horizontal .toggle-outside {
-    left: 0;
-  }
-  .switch--expanding-inner input:checked + label:hover ~ .toggle-outside .toggle-inside {
-    height: 2.5rem;
-    width: 2.5rem;
-  }
-  .switch--expanding-inner.switch--horizontal input:hover ~ .toggle-outside .toggle-inside {
-    width: 3.5rem;
-  }
-  .switch--expanding-inner.switch--horizontal input:hover ~ input:checked ~ .toggle-outside .toggle-inside {
-    left: 2.25rem;
-  }
-  .switch--expanding-inner.switch--vertical input:hover ~ .toggle-outside .toggle-inside {
-    height: 3.5rem;
-  }
-  .switch--expanding-inner.switch--vertical input:hover ~ input:checked ~ .toggle-outside .toggle-inside {
-    top: 2.25rem;
-  }
+}
