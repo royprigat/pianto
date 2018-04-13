@@ -6,6 +6,7 @@ var start = 0;
 var end = 0;
 var tool = false;
 var mute = false;
+var looping = false;
 
 function initVideoPlayer() {
     'use strict';
@@ -28,10 +29,6 @@ function initVideoPlayer() {
                 video.parents('.video-container').addClass('active');
                 video[0].preload = 'auto';
             }
-
-            // $(video).on('timeupdate', function () {
-            //     var videoTime = ((this.currentTime / this.duration) * 100);
-            // });
 
             function updateProgressAuto(video) {
                 var videoBar = $(video).siblings('.progress-bar');
@@ -165,11 +162,14 @@ function initKeyboard() {
                 $('#stopper').css('display', 'none');
                 video.get(0).pause();
                 end = video[0].currentTime;
-                if (end - start > 3) {
+                if (end - start > 2) {
                     var lesson = '<div class="lesson">' +
-                        '<video controls>' +
-                        '<source src="./videos/interstellar.mp4#t=' + start + "," + end + '" type="video/mp4">' +
+                        '<video>' +
+                        '<source src=' + video.attr('src') + '#t=' + start + "," + end + ' type="video/mp4">' +
                         '</video>' +
+                        '<div class="lesson-overlay">' +
+                        toTime(start) + " - " + toTime(end) +
+                        '</div>' +
                         '</div>';
                     $('#lessons').append(lesson);
                 }
@@ -289,3 +289,14 @@ function initControls() {
         $("#speed-4").addClass("set");
     });
 };
+
+function toTime(input) {
+    var seconds = ((Math.floor(parseFloat(input).toFixed(2))) % 60).toString();
+    var minutes = (Math.floor((parseFloat(input).toFixed(2)) / 60)).toString();
+
+    if (seconds.length == 1) {
+        seconds = '0' + seconds;
+    }
+
+    return minutes + ":" + seconds;
+}

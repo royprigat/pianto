@@ -173,7 +173,7 @@ video {
   padding: 0px;
   padding-right: 80px;
   position: fixed;
-  top: 50px;
+  top: 0;
   right: 0;
   overflow-x: hidden;
   box-shadow: -4px 0px 30px -10px grey;
@@ -192,40 +192,35 @@ video {
   z-index: 30;
 }
 
-#add-lesson {
-  width: 80px;
-  height: 30px;
-  padding-top: 6px;
-  margin-left: 20px;
-  background: forestgreen;
-  text-align: center;
-  color: white;
-  border-radius: 2px;
-  transition: background 0.3s; 
-}
-
-#add-lesson:hover {
-  cursor: pointer;
-  background: rgb(11, 114, 8);
-  transition: background 0.3s;
-}
-
 #lessons {
   width: 100%;
   height: auto;
-  overflow-y: scroll;
 }
 
 .lesson {
-  width: 250px ;
+  position: relative;
+  width: 300px ;
   margin: 20px;
   margin-left: 25px;
+}
+
+.lesson:hover {
+  cursor: pointer;
+}
+
+.lesson-overlay {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  font-size: 14px;
+  color: white;
 }
 
 .video-wrapper {
   position: relative;
   width: 100%;
   height: auto;
+  margin-top: 54px;
 }
 
 .video-wrapper .video-container {
@@ -372,49 +367,49 @@ video {
 
 #play_pause {
   position: absolute;
-  top: 20px;
+  top: 60px;
   right: 15px;
 }
 
 #mute {
   position: absolute;
-  top: 60px;
+  top: 100px;
   right: 15px;
 }
 
 #backward {
   position: absolute;
-  top: 100px;
+  top: 140px;
   right: 15px;
 }
 
 #forward {
   position: absolute;
-  top: 140px;
+  top: 180px;
   right: 15px;
 }
 
 #speed-1 {
   position: absolute;
-  bottom: 165px;
+  bottom: 155px;
   right: -65px;
 }
 
 #speed-2 {
   position: absolute;
-  bottom: 125px;
+  bottom: 115px;
   right: -65px;
 }
 
 #speed-3 {
   position: absolute;
-  bottom: 85px;
+  bottom: 75px;
   right: -65px;
 }
 
 #speed-4 {
   position: absolute;
-  bottom: 45px;
+  bottom: 35px;
   right: -65px;
 }
 
@@ -427,9 +422,9 @@ video {
 #record {
   display: flex;
   position: absolute;
-  top: 20px;
-  left: 20px;
-  z-index: 10;
+  top: 30px;
+  left: 30px;
+  z-index: 40;
 }
 
 #red-dot {
