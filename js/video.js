@@ -1,7 +1,11 @@
-var video = $('.video-container').find('video'), nextVideo;
+var video = $('.video-container').find('video'),
+    nextVideo;
 var videoBar = video.siblings('.progress-bar');
 var recording = false;
+var start = 0;
+var end = 0;
 var tool = false;
+var mute = false;
 
 function initVideoPlayer() {
     'use strict';
@@ -25,16 +29,30 @@ function initVideoPlayer() {
                 video[0].preload = 'auto';
             }
 
-            $(video).on('timeupdate', function () {
-                var videoTime = ((this.currentTime / this.duration) * 100);
-            });
+            // $(video).on('timeupdate', function () {
+            //     var videoTime = ((this.currentTime / this.duration) * 100);
+            // });
 
             function updateProgressAuto(video) {
                 var videoBar = $(video).siblings('.progress-bar');
                 var videoPercent = ((video[0].currentTime / video[0].duration) * 100);
 
+                var totalSeconds = ((Math.floor(parseFloat(video[0].duration).toFixed(2))) % 60).toString();
+                var totalMinutes = (Math.floor((parseFloat(video[0].duration).toFixed(2)) / 60)).toString();
+
+                var seconds = ((Math.floor(parseFloat(video[0].currentTime).toFixed(2))) % 60).toString();
+                var minutes = (Math.floor((parseFloat(video[0].currentTime).toFixed(2)) / 60)).toString();
+
+                if (seconds.length == 1) {
+                    seconds = '0' + seconds;
+                }
+
+                if (totalSeconds.length == 1) {
+                    totalSeconds = '0' + totalSeconds;
+                }
+
                 videoBar.find('.progress').css('width', videoPercent + '%');
-                videoBar.find('.progress-value').html(parseFloat(video[0].currentTime).toFixed(2) + ' / ' + parseFloat(video[0].duration).toFixed(2));
+                videoBar.find('.progress-value').html(minutes + ':' + seconds + ' / ' + totalMinutes + ':' + totalSeconds);
             }
 
             setInterval(function () {
@@ -45,8 +63,22 @@ function initVideoPlayer() {
                 var videoBar = $(video).siblings('.progress-bar');
                 var videoPercentage = ((progressBarPosition / videoBar.outerWidth()) * 100);
 
+                var totalSeconds = ((Math.floor(parseFloat(video[0].duration).toFixed(2))) % 60).toString();
+                var totalMinutes = (Math.floor((parseFloat(video[0].duration).toFixed(2)) / 60)).toString();
+
+                var seconds = ((Math.floor(parseFloat(video[0].currentTime).toFixed(2))) % 60).toString();
+                var minutes = (Math.floor((parseFloat(video[0].currentTime).toFixed(2)) / 60)).toString();
+
+                if (seconds.length == 1) {
+                    seconds = '0' + seconds;
+                }
+
+                if (totalSeconds.length == 1) {
+                    totalSeconds = '0' + totalSeconds;
+                }
+
                 videoBar.find('.progress').css('width', videoPercentage + '%');
-                videoBar.find('.progress-value').html(parseFloat(video[0].currentTime).toFixed(2) + ' / ' + parseFloat(video[0].duration).toFixed(2));
+                videoBar.find('.progress-value').html(minutes + ':' + seconds + ' / ' + totalMinutes + ':' + totalSeconds);
                 video[0].currentTime = ((video[0].duration * videoPercentage) / 100);
             }
 
@@ -107,7 +139,7 @@ function initVideoPlayer() {
 
     function blinkingRedDot() {
         var dot = $('#red-dot');
-        setInterval(function(){
+        setInterval(function () {
             if (dot.css("opacity") == 1) {
                 dot.css("opacity", 0);
             } else {
@@ -118,22 +150,48 @@ function initVideoPlayer() {
 };
 
 function initKeyboard() {
-    // Define keyboard buttons
     document.onkeypress = function (e) {
         e.preventDefault();
-        // Space bar
+        // Space bar for play/pause
         if ((e || window.event).keyCode === 32) {
             video.get(0).paused ? (video.get(0).play(), $('#play_pause').html(feather.icons.pause.toSvg())) : (video.get(0).pause(), $('#play_pause').html(feather.icons.play.toSvg()));
         }
-        // r
+        // r for recording
         if ((e || window.event).keyCode === 114) {
+
             if (recording) {
                 recording = false;
                 $('#red-dot').css('display', 'none');
+                $('#stopper').css('display', 'none');
                 video.get(0).pause();
+                end = video[0].currentTime;
+                if (end - start > 3) {
+                    var lesson = '<div class="lesson">' +
+                        '<video controls>' +
+                        '<source src="./videos/interstellar.mp4#t=' + start + "," + end + '" type="video/mp4">' +
+                        '</video>' +
+                        '</div>';
+                    $('#lessons').append(lesson);
+                }
+                start = video[0].currentTime;
             } else {
                 recording = true;
                 $('#red-dot').css('display', 'block');
+                $('#stopper').css('display', 'block');
+                video.get(0).play();
+                start = video[0].currentTime;
+            }
+        }
+        // m for mute/unmute
+        if ((e || window.event).keyCode === 109) {
+            if (mute) {
+                mute = false;
+                video.get(0).muted = false;
+                $("#mute").removeClass("set");
+            } else {
+                mute = true;
+                video.get(0).muted = true;
+                $("#mute").addClass("set");
             }
         }
         // t
@@ -173,6 +231,18 @@ function initKeyboard() {
             $("#speed-4").addClass("set");
         }
     };
+
+    document.onkeydown = function (e) {
+        // left arrow
+        if ((e || window.event).keyCode === 37) {
+            video[0].currentTime -= 5;
+        }
+
+        // right arrow
+        if ((e || window.event).keyCode === 39) {
+            video[0].currentTime += 5;
+        }
+    };
 };
 
 function initControls() {
@@ -180,5 +250,42 @@ function initControls() {
         video.get(0).paused ?
             (video.get(0).play(), $(this).html(feather.icons.pause.toSvg())) :
             (video.get(0).pause(), $(this).html(feather.icons.play.toSvg()));
+    });
+    $('#mute').on('click', function (e) {
+        if (mute) {
+            mute = false;
+            video.get(0).muted = false;
+            $("#mute").removeClass("set");
+        } else {
+            mute = true;
+            video.get(0).muted = true;
+            $("#mute").addClass("set");
+        }
+    });
+    $('#backward').on('click', function (e) {
+        video[0].currentTime -= 5;
+    });
+    $('#forward').on('click', function (e) {
+        video[0].currentTime += 5;
+    });
+    $('#speed-1').on('click', function (e) {
+        video.get(0).playbackRate = 1;
+        $("#video-container").find(".set").removeClass("set");
+        $("#speed-1").addClass("set");
+    });
+    $('#speed-2').on('click', function (e) {
+        video.get(0).playbackRate = 0.8;
+        $("#video-container").find(".set").removeClass("set");
+        $("#speed-2").addClass("set");
+    });
+    $('#speed-3').on('click', function (e) {
+        video.get(0).playbackRate = 0.6;
+        $("#video-container").find(".set").removeClass("set");
+        $("#speed-3").addClass("set");
+    });
+    $('#speed-4').on('click', function (e) {
+        video.get(0).playbackRate = 0.4;
+        $("#video-container").find(".set").removeClass("set");
+        $("#speed-4").addClass("set");
     });
 };

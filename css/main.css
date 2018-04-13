@@ -183,18 +183,43 @@ video {
   width: 0 !important;
 }
 
-#mask {
+#crop {
   position: absolute;
-  bottom: -14px;
+  bottom: -34px;
   width: 100%;
-  height: 40px;
+  height: 60px;
   background: #f8f9fa;
-  z-index: 10;
+  z-index: 30;
 }
 
-video::-webkit-media-controls-panel {
-  /* display: flex !important;
-    opacity: 1 !important; */
+#add-lesson {
+  width: 80px;
+  height: 30px;
+  padding-top: 6px;
+  margin-left: 20px;
+  background: forestgreen;
+  text-align: center;
+  color: white;
+  border-radius: 2px;
+  transition: background 0.3s; 
+}
+
+#add-lesson:hover {
+  cursor: pointer;
+  background: rgb(11, 114, 8);
+  transition: background 0.3s;
+}
+
+#lessons {
+  width: 100%;
+  height: auto;
+  overflow-y: scroll;
+}
+
+.lesson {
+  width: 250px ;
+  margin: 20px;
+  margin-left: 25px;
 }
 
 .video-wrapper {
@@ -253,7 +278,7 @@ video::-webkit-media-controls-panel {
   bottom: 26px;
   left: 0px;
   width: 100%;
-  height: 10px;
+  height: 6px;
   background: rgba(25, 25, 25, 0.85);
   z-index: 10;
   opacity: 1;
@@ -351,6 +376,24 @@ video::-webkit-media-controls-panel {
   right: 15px;
 }
 
+#mute {
+  position: absolute;
+  top: 60px;
+  right: 15px;
+}
+
+#backward {
+  position: absolute;
+  top: 100px;
+  right: 15px;
+}
+
+#forward {
+  position: absolute;
+  top: 140px;
+  right: 15px;
+}
+
 #speed-1 {
   position: absolute;
   bottom: 165px;
@@ -381,25 +424,33 @@ video::-webkit-media-controls-panel {
   transition: background 0.3s;
 }
 
-#full_screen {
+#record {
+  display: flex;
   position: absolute;
-  top: 60px;
-  right: 15px;
-  width: 50px;
-  z-index: 1;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
 }
 
 #red-dot {
   display: none;
-  position: absolute;
-  top: 20px;
-  left: 20px;
   width: 20px;
   height: 20px;
   z-index: 10;
   background: radial-gradient(circle, rgb(181, 0, 0), rgb(208, 0, 0), rgb(255, 34, 34));;
   border-radius: 20px;
   opacity: 0;
+}
+
+#stopper {
+  /* position: absolute;
+  top: 21px;
+  left: 50px;
+  width: 20px;
+  height: 20px; */
+  z-index: 10;
+  color: white;
+  text-align: center;
 }
 
 @media screen and (max-width: 768px) {
