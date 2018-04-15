@@ -1,3 +1,4 @@
+// Global vars
 var video = $('.video-container').find('video'),
     nextVideo;
 var videoBar = video.siblings('.progress-bar');
@@ -7,6 +8,8 @@ var end = 0;
 var tool = false;
 var mute = false;
 var looping = false;
+var interval;
+var time = 0;
 
 function initVideoPlayer() {
     'use strict';
@@ -155,7 +158,6 @@ function initKeyboard() {
         }
         // r for recording
         if ((e || window.event).keyCode === 114) {
-
             if (recording) {
                 recording = false;
                 $('#red-dot').css('display', 'none');
@@ -176,6 +178,10 @@ function initKeyboard() {
                 start = video[0].currentTime;
             } else {
                 recording = true;
+                time = 0;
+                $('#stopper').html('0:00');
+                clearInterval(interval);
+                interval = setInterval(timer, 1000);
                 $('#red-dot').css('display', 'block');
                 $('#stopper').css('display', 'block');
                 video.get(0).play();
@@ -299,4 +305,9 @@ function toTime(input) {
     }
 
     return minutes + ":" + seconds;
+};
+
+function timer() {
+    time += 1;
+    $('#stopper').html(toTime(time));
 }
