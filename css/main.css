@@ -168,6 +168,10 @@ video {
   outline-offset: -5px;
 }
 
+.lesson-selected {
+  outline: 5px solid var(--general-blue);
+}
+
 #content {
   height: 100%;
   padding: 0px;
@@ -199,18 +203,20 @@ video {
   padding-left: 50px;
   font-size: 20px;
   font-weight: 700;
+  z-index: 100;
 }
 
 .lesson {
   position: relative;
+  display: -webkit-box;
   width: 300px;
   margin: 20px;
   margin-left: 25px;
 }
 
-.lesson-title {
-  width: 200px;
-  height: 100px;
+.lesson-details {
+  font-size: 20px;
+  margin-left: 30px;
 }
 
 .lesson:hover {
@@ -453,6 +459,10 @@ video {
   color: white;
   text-align: center;
   font-size: 16px;
+}
+
+#keyboardContainer, #svgNotesContainer  {
+  margin-top: 100px;
 }
 
 @media screen and (max-width: 768px) {

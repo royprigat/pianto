@@ -8,9 +8,11 @@ var end = 0;
 var tool = false;
 var mute = false;
 var looping = false;
-var editMode = false;
 var interval;
 var time = 0;
+
+var lessonStart = 0;
+var lessonEnd = 0;
 
 function initVideoPlayer() {
     'use strict';
@@ -35,25 +37,19 @@ function initVideoPlayer() {
             }
 
             function updateProgressAuto(video) {
+                if (looping) {
+                    console.log(lessonEnd);
+                    if (video[0].currentTime == lessonEnd || video[0].currentTime > lessonEnd) {
+                        video[0].currentTime = lessonStart;
+                        video[0].play();
+                    }
+                }
+
                 var videoBar = $(video).siblings('.progress-bar');
                 var videoPercent = ((video[0].currentTime / video[0].duration) * 100);
 
-                var totalSeconds = ((Math.floor(parseFloat(video[0].duration).toFixed(2))) % 60).toString();
-                var totalMinutes = (Math.floor((parseFloat(video[0].duration).toFixed(2)) / 60)).toString();
-
-                var seconds = ((Math.floor(parseFloat(video[0].currentTime).toFixed(2))) % 60).toString();
-                var minutes = (Math.floor((parseFloat(video[0].currentTime).toFixed(2)) / 60)).toString();
-
-                if (seconds.length == 1) {
-                    seconds = '0' + seconds;
-                }
-
-                if (totalSeconds.length == 1) {
-                    totalSeconds = '0' + totalSeconds;
-                }
-
                 videoBar.find('.progress').css('width', videoPercent + '%');
-                videoBar.find('.progress-value').html(minutes + ':' + seconds + ' / ' + totalMinutes + ':' + totalSeconds);
+                videoBar.find('.progress-value').html(toTime(video[0].currentTime) + ' / ' + toTime(video[0].duration));
             }
 
             setInterval(function () {
@@ -64,22 +60,8 @@ function initVideoPlayer() {
                 var videoBar = $(video).siblings('.progress-bar');
                 var videoPercentage = ((progressBarPosition / videoBar.outerWidth()) * 100);
 
-                var totalSeconds = ((Math.floor(parseFloat(video[0].duration).toFixed(2))) % 60).toString();
-                var totalMinutes = (Math.floor((parseFloat(video[0].duration).toFixed(2)) / 60)).toString();
-
-                var seconds = ((Math.floor(parseFloat(video[0].currentTime).toFixed(2))) % 60).toString();
-                var minutes = (Math.floor((parseFloat(video[0].currentTime).toFixed(2)) / 60)).toString();
-
-                if (seconds.length == 1) {
-                    seconds = '0' + seconds;
-                }
-
-                if (totalSeconds.length == 1) {
-                    totalSeconds = '0' + totalSeconds;
-                }
-
                 videoBar.find('.progress').css('width', videoPercentage + '%');
-                videoBar.find('.progress-value').html(minutes + ':' + seconds + ' / ' + totalMinutes + ':' + totalSeconds);
+                videoBar.find('.progress-value').html(toTime(video[0].currentTime) + ' / ' + toTime(video[0].duration));
                 video[0].currentTime = ((video[0].duration * videoPercentage) / 100);
             }
 
@@ -120,6 +102,9 @@ function initVideoPlayer() {
 
     function changeVideo() {
         $("#videos .poster-wrapper").on("click", function () {
+            looping = false;
+            lessonStart = 0;
+            lessonEnd = 0;
             var alt = $(this).children("img").attr("alt");
 
             if (alt == "interstellar") {
@@ -325,13 +310,16 @@ function timer() {
 function addLesson(start, end) {
     var alt = $(".selected").children("img").attr("alt");
     var lesson = '<div class="lesson">' +
-        '<video loop>' +
+        '<video>' +
         '<source src=' + video.attr('src') + '#t=' + start + "," + end + ' type="video/mp4">' +
         '</video>' +
         '<div class="lesson-overlay">' +
         toTime(start) + " - " + toTime(end) +
         '</div>' +
-        '</div>';
+        '<div class="lesson-details" contenteditable="true">' +
+        'Title'
+    '</div>' +
+    '</div>';
 
     if (alt == "interstellar") {
         $('#interstellar-lessons').append(lesson);
@@ -345,4 +333,15 @@ function addLesson(start, end) {
     if (alt == "gladiator") {
         $('#gladiator-lessons').append(lesson);
     };
-}
+
+    $(".lesson").on("click", function () {
+        looping = true;
+        $(this).children("video").addClass('lesson-selected');
+        var src = $(this).children("video").children("source").attr("src");
+        var start_end = (src.substring(src.indexOf("=") + 1)).split(",");
+        lessonStart = start_end[0];
+        lessonEnd = start_end[1];
+        video.attr("src", src);
+        video.attr("autoplay", '');
+    });
+};

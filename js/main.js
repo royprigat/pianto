@@ -5,114 +5,66 @@ $(document).ready(function () {
 	initControls();
 	initKeyboard();
 
+	//create piano with 3 octaves, starting at C4 (lowest key)
+	//shows labels and octave shift buttons
+	var keyboardHTML = htmlForKeyboardWithOctaves(3, octaves.C4, true, true)
+	//render the keyboard in the div
+	$("#keyboardContainer").html(keyboardHTML)
+	//when keys are pressed updatePreview() is called
+	bindKeysToFunction(updatePreviewWithNote)
+	//when the clef is changed updatePreviewWithClef() is called
+	bindClefSelectionToFunction(updatePreviewWithClef)
+	//set the default clef to G4
+	setSelectedClef(clefs.G4)
+
+
+	//this stores all keyboard input
+	var plaineEasieCodes = []
+	var selectedClef = clefs.G4
+
+	//this is called whenever a piano key is pressed
+	function updatePreviewWithNote(sender, paeNote) {
+		console.log("key pressed is " + paeNote)
+		plaineEasieCodes.push(paeNote)
+		updateNotesSVG()
+	}
+
+	//this is called when the user changes the clef for display
+	function updatePreviewWithClef(sender, clef) {
+		console.log("clef changed to " + clef)
+		selectedClef = clef
+		updateNotesSVG()
+	}
+
+	function updateNotesSVG() {
+		//render the notes to an SVG using the Verovio tookit
+		//width of the svg is 800px and note scaling 50%
+		var notesSVG = svgNotesForPlaineEasieCode(plaineEasieCodes.join(""), selectedClef, 800, 50)
+		//insert thes SVG code in our div
+		var svgContainerDiv = $('#svgNotesContainer')
+		svgContainerDiv.html(notesSVG)
+	}
+
 	$('#home_btn').on('click', function (e) {
 		e.preventDefault();
 		$('.title').html('Library');
-    });
+		$('#content').children().show();
+		$('#keyboardContainer').hide();
+		$('#svgNotesContainer').hide();
+	});
 
 	$('#classroom_btn').on('click', function (e) {
 		e.preventDefault();
 		$('.title').html('Lessons');
+		$('#content').children().hide();
+		$('#keyboardContainer').show();
+		$('#svgNotesContainer').show();
 	});
-	
+
 	$('interstellar-lessons').hide();
 	$('imitation-lessons').hide();
 	$('darknight-lessons').hide();
 	$('gladiator-lessons').hide();
-
-	// var itemContainers = [].slice.call(document.querySelectorAll('.board-column-content'));
-	// var columnGrids = [];
-	// var boardGrid;
-
-	// Define the column grids so we can drag those
-	// items around.
-
-	// itemContainers.forEach(function (container) {
-
-	// Instantiate column grid.
-	// var grid = new Muuri(container, {
-	// 		items: '.board-item',
-	// 		layoutDuration: 400,
-	// 		layoutEasing: 'ease',
-	// 		dragEnabled: true,
-	// 		dragSort: function () {
-	// 			return columnGrids;
-	// 		},
-	// 		dragSortInterval: 0,
-	// 		dragContainer: document.body,
-	// 		dragReleaseDuration: 400,
-	// 		dragReleaseEasing: 'ease'
-	// 	})
-	// .on('dragStart', function (item) {
-
-	// Let's set fixed widht/height to the dragged item
-	// so that it does not stretch unwillingly when
-	// it's appended to the document body for the
-	// duration of the drag.
-
-	// 	item.getElement().style.width = item.getWidth() + 'px';
-	// 	item.getElement().style.height = item.getHeight() + 'px';
-	// })
-	// .on('dragReleaseEnd', function (item) {
-	// Let's remove the fixed width/height from the
-	// dragged item now that it is back in a grid
-	// column and can freely adjust to it's
-	// surroundings.
-
-	// item.getElement().style.width = '';
-	// item.getElement().style.height = '';
-
-	// Just in case, let's refresh the dimensions of all items
-	// in case dragging the item caused some other items to
-	// be different size.
-
-	// 	columnGrids.forEach(function (grid) {
-	// 		grid.refreshItems();
-	// 	});
-	// })
-	// .on('layoutStart', function () {
-
-	// Let's keep the board grid up to date with the
-	// dimensions changes of column grids.
-
-	// 	boardGrid.refreshItems().layout();
-	// });
-
-	// Add the column grid reference to the column grids
-	// array, so we can access it later on.
-
-	// 	columnGrids.push(grid);
-	// });
-
-	// Instantiate the board grid so we can drag those
-	// columns around.
-
-	// boardGrid = new Muuri('.board', {
-	// 	layoutDuration: 400,
-	// 	layoutEasing: 'ease',
-	// 	dragEnabled: true,
-	// 	dragSortInterval: 0,
-	// 	dragStartPredicate: {
-	// 		handle: '.board-column-header'
-	// 	},
-	// 	dragReleaseDuration: 400,
-	// 	dragReleaseEasing: 'ease'
-	// });
-
-	// $("#add_button").click(function () {
-	// 	var start = $('#slider-range').slider("values")[0].toString();
-	// 	var end = $('#slider-range').slider("values")[1].toString();
-	// 	var range = start + "," + end;
-	// 	var new_vid = "<div class='board-item'>" +
-	// 		"<div class='board-item-content'>" +
-	// 		"<video class='new-vid' controls>" +
-	// 		"<source src='./videos/The Imitation Game.mp4#t=" +
-	// 		range +
-	// 		"'type='video/mp4'>" +
-	// 		"</video>" +
-	// 		"</div>" +
-	// 		"</div>";
-
-	// 	$("#playlist").append(new_vid);
-	// });
+	$('#keyboardContainer').hide();
+	$('#svgNotesContainer').hide();
 });
