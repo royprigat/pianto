@@ -5,6 +5,21 @@ $(document).ready(function () {
 	initControls();
 	initKeyboard();
 
+	$('#home_btn').on('click', function (e) {
+		e.preventDefault();
+		$('.title').html('Library');
+    });
+
+	$('#classroom_btn').on('click', function (e) {
+		e.preventDefault();
+		$('.title').html('Lessons');
+	});
+	
+	$('interstellar-lessons').hide();
+	$('imitation-lessons').hide();
+	$('darknight-lessons').hide();
+	$('gladiator-lessons').hide();
+
 	// var itemContainers = [].slice.call(document.querySelectorAll('.board-column-content'));
 	// var columnGrids = [];
 	// var boardGrid;

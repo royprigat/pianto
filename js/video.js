@@ -8,6 +8,7 @@ var end = 0;
 var tool = false;
 var mute = false;
 var looping = false;
+var editMode = false;
 var interval;
 var time = 0;
 
@@ -123,15 +124,31 @@ function initVideoPlayer() {
 
             if (alt == "interstellar") {
                 video.attr("src", "./videos/interstellar.mp4");
+                $('#darknight-lessons').hide();
+                $('#imitation-lessons').hide();
+                $('#gladiator-lessons').hide();
+                $('#interstellar-lessons').show();
             }
             if (alt == "darknight") {
                 video.attr("src", "./videos/the_dark_night.mp4");
+                $('#gladiator-lessons').hide();
+                $('#imitation-lessons').hide();
+                $('#interstellar-lessons').hide();
+                $('#darknight-lessons').show();
             }
             if (alt == "imitation") {
                 video.attr("src", "./videos/the_imitation_game.mp4");
+                $('#darknight-lessons').hide();
+                $('#gladiator-lessons').hide();
+                $('#interstellar-lessons').hide();
+                $('#imitation-lessons').show();
             }
             if (alt == "gladiator") {
                 video.attr("src", "./videos/gladiator.mp4");
+                $('#darknight-lessons').hide();
+                $('#imitation-lessons').hide();
+                $('#interstellar-lessons').hide();
+                $('#gladiator-lessons').show();
             }
             video.attr("autoplay", '');
         });
@@ -158,6 +175,7 @@ function initKeyboard() {
         }
         // r for recording
         if ((e || window.event).keyCode === 114) {
+
             if (recording) {
                 recording = false;
                 $('#red-dot').css('display', 'none');
@@ -165,15 +183,7 @@ function initKeyboard() {
                 video.get(0).pause();
                 end = video[0].currentTime;
                 if (end - start > 2) {
-                    var lesson = '<div class="lesson">' +
-                        '<video>' +
-                        '<source src=' + video.attr('src') + '#t=' + start + "," + end + ' type="video/mp4">' +
-                        '</video>' +
-                        '<div class="lesson-overlay">' +
-                        toTime(start) + " - " + toTime(end) +
-                        '</div>' +
-                        '</div>';
-                    $('#lessons').append(lesson);
+                    addLesson(start, end);
                 }
                 start = video[0].currentTime;
             } else {
@@ -310,4 +320,29 @@ function toTime(input) {
 function timer() {
     time += 1;
     $('#stopper').html(toTime(time));
+};
+
+function addLesson(start, end) {
+    var alt = $(".selected").children("img").attr("alt");
+    var lesson = '<div class="lesson">' +
+        '<video loop>' +
+        '<source src=' + video.attr('src') + '#t=' + start + "," + end + ' type="video/mp4">' +
+        '</video>' +
+        '<div class="lesson-overlay">' +
+        toTime(start) + " - " + toTime(end) +
+        '</div>' +
+        '</div>';
+
+    if (alt == "interstellar") {
+        $('#interstellar-lessons').append(lesson);
+    };
+    if (alt == "darknight") {
+        $('#darknight-lessons').append(lesson);
+    };
+    if (alt == "imitation") {
+        $('#imitation-lessons').append(lesson);
+    };
+    if (alt == "gladiator") {
+        $('#gladiator-lessons').append(lesson);
+    };
 }

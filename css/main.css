@@ -192,16 +192,25 @@ video {
   z-index: 30;
 }
 
-#lessons {
+#interstellar-lessons, #darknight-lessons, #imitation-lessons, #gladiator-lessons,  {
   width: 100%;
   height: auto;
+  padding-top: 50px;
+  padding-left: 50px;
+  font-size: 20px;
+  font-weight: 700;
 }
 
 .lesson {
   position: relative;
-  width: 300px ;
+  width: 300px;
   margin: 20px;
   margin-left: 25px;
+}
+
+.lesson-title {
+  width: 200px;
+  height: 100px;
 }
 
 .lesson:hover {
