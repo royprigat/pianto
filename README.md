@@ -1,1 +1,3 @@
-# pianto
+# Pianto
+
+![Screenshot](img/screenshot.png)
