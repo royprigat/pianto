@@ -9,199 +9,214 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/jquery-ui.min.css">
-    <link rel="stylesheet" href="./css/piano.css">
+    <link rel="stylesheet" href="./css/owl.carousel.min.css">
+    <link rel="stylesheet" href="./css/owl.theme.default.min.css">
     <link rel="stylesheet" href="./css/main.css">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,700|Roboto:400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,300,400,500,600,700" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 </head>
 
 <body>
 
-    <nav id="navbar" class="navbar navbar-expand-md navbar-light sticky-top bg-light">
-        <a class="navbar-brand" href="#">
-            <img id="logo" src="./img/pianto_logo.svg" width="25" height="30" alt="">
-        </a>
+    <div id="front-page" class="container-fluid">
 
-        <div class="headerDivider"></div>
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a id="home_btn" class="nav-link" href="#">Home
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                <li id="classroom_btn" class="nav-item">
-                    <a class="nav-link" href="#">Classroom</a>
-                </li>
-            </ul>
+        <div id="pianto">
+            <div class="title1">Pianto</div>
+            <div class="title2">Select a
+                <span style="color: white; background: #2c3e50; padding: 3px; font-weight: 100;">piano cover</span> to start learning</div>
         </div>
-    </nav>
 
-    <div class="container-fluid">
-        <div class="row">
-            <div id="sidenav" class="col-md-3 bg-light">
-                <div class="row">
-                    <div class="col-md-6" style="padding-right: 0px;">
-                        <div class="title">Library</div>
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#">
-                                    <span data-feather="layers"></span>
-                                    All Videos
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <span data-feather="star"></span>
-                                    Favorites
-                                </a>
-                            </li>
-                        </ul>
+        <div id="video-selection">
+            <div class="nextItem">
+                <span data-feather="chevron-right"></span>
+            </div>
+            <div class="prevItem">
+                <span data-feather="chevron-left"></span>
+            </div>
+            <div class="owl-carousel">
+                <div class="poster-wrapper">
+                    <img src="https://i.pinimg.com/originals/34/11/7f/34117ffaf8cd93ed3387ad22fec6bf24.jpg" class="poster" alt="gladiator">
+                    <div class="overlay">
+                        <div class="overlay-title">Gladiator</div>
+                        <div class="overlay-time">3:53</div>
                     </div>
-
-                    <div class="col-md-6" style="padding-right: 25px;">
-
-                        <div id="options">
-                            <input id="search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                            <div id="filter" class="btn-group">
-                                <button class="btn btn-secondary btn-sm dropdown-toggle no-background" type="button" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                                    Most Views
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a href="#">
-                                        <span data-feather="star"></span>
-                                        Favorites
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="videos">
-                            <div class="poster-wrapper">
-                                <img src="./posters/interstellar.jpg" class="poster" alt="interstellar">
-                                <div class="overlay">
-                                    Interstellar
-                                </div>
-                            </div>
-                            <div class="poster-wrapper">
-                                <img src="./posters/Imitation.jpg" class="poster" alt="imitation">
-                                <div class="overlay">Imitation Game</div>
-                            </div>
-                            <div class="poster-wrapper">
-                                <img src="./posters/darknight.jpg" class="poster" alt="darknight">
-                                <div class="overlay">The Dark Night</div>
-                            </div>
-                            <div class="poster-wrapper" style="margin-bottom: 0px;">
-                                <img src="https://i.pinimg.com/originals/34/11/7f/34117ffaf8cd93ed3387ad22fec6bf24.jpg" class="poster" alt="gladiator">
-                                <div class="overlay">Gladiator</div>
-                            </div>
-                        </div>
+                </div>
+                <div class="poster-wrapper">
+                    <img src="./posters/interstellar.jpg" class="poster" alt="interstellar">
+                    <div class="overlay">
+                        <div class="overlay-title">Interstellar</div>
+                        <div class="overlay-time">4:46</div>
                     </div>
-
-                    <div>
-                        <button id="add_video" type="button" class="btn btn-outline-primary">Add Video</button>
+                </div>
+                <div class="poster-wrapper">
+                    <img src="./posters/darknight.jpg" class="poster" alt="darknight">
+                    <div class="overlay">
+                        <div class="overlay-title">The Dark Night</div>
+                        <div class="overlay-time">7:28</div>
                     </div>
                 </div>
             </div>
-
-            <div id="content" class="col-md-9 bg-light">
-                <div id="play_pause" class="control-btn">
-                    <span data-feather="play"></span>
-                </div>
-                <div id="mute" class="control-btn">
-                    <span data-feather="volume-x"></span>
-                </div>
-
-                <div id="backward" class="control-btn">
-                    <span data-feather="skip-back"></span>
-                </div>
-                <div id="forward" class="control-btn">
-                    <span data-feather="skip-forward"></span>
-                </div>
-
-                <!-- Main player -->
-                <div class="video-wrapper" id="video-container">
-                    <div id="record">
-                        <div id="red-dot"></div>
-                        <div id="stopper"></div>
-                    </div>
-                    <div id="speed-1" class="control-btn set">
-                        <span>1x</span>
-                    </div>
-                    <div id="speed-2" class="control-btn">
-                        <span>0.8x</span>
-                    </div>
-                    <div id="speed-3" class="control-btn">
-                        <span>0.6x</span>
-                    </div>
-                    <div id="speed-4" class="control-btn">
-                        <span>0.4x</span>
-                    </div>
-                    <!--first video-->
-                    <div class="video-container">
-                        <div class="progress-bar">
-                            <div class="progress">
-                                <div class="progress-inner">
-                                    <!-- <span class="progress-time"></span> -->
-                                    <span class="progress-value"></span>
-                                </div>
-                            </div>
-                            <div class="buffer"></div>
-                        </div>
-                        <video preload="none" poster="./img/piano_background.jpg" loop>
-                            <source src="" type="video/mp4">
-                        </video>
-                        <div id="crop"></div>
-                    </div>
-                </div>
- 
-                <div id="interstellar-lessons">
-
-                </div>
-
-                <div id="imitation-lessons">
-
-                </div>
-
-                <div id="darknight-lessons">
-
-                </div>
-
-                <div id="gladiator-lessons">
-
-                </div>
-
-                <div id="keyboardContainer"></div>
-                <div id="svgNotesContainer"></div>
-                
-            </div>
+        </div>
     </div>
 
+    <nav id="navbar" class="navbar navbar-expand-md navbar-light sticky-top">
+        <a id="back-btn">
+            <i class="material-icons" style="font-size: 35px; font-weight: 100;">chevron_left</i>
+            <div style="padding-top: 2px; font-size: 20px;">Back</div>
+        </a>
+
+        <div id="control-panel-wrapper">
+            <div id="playback-speed" class="dropdown control-btn">
+                <div class="dropdown-toggle" id="dropdownPlayback" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    1x
+                </div>
+                <div class="dropdown-menu" aria-labelledby="dropdownPlayback">
+                    <a id="speed-1" class="dropdown-item" data-toggle="tooltip" data-placement="right" data-delay='{"show":"800", "hide":"0"}'
+                        title="Keyboard: 1">1x</a>
+                    <a id="speed-2" class="dropdown-item" data-toggle="tooltip" data-placement="right" data-delay='{"show":"800", "hide":"0"}'
+                        title="Keyboard: 2">0.8x</a>
+                    <a id="speed-3" class="dropdown-item" data-toggle="tooltip" data-placement="right" data-delay='{"show":"800", "hide":"0"}'
+                        title="Keyboard: 3">0.6x</a>
+                    <a id="speed-4" class="dropdown-item" data-toggle="tooltip" data-placement="right" data-delay='{"show":"800", "hide":"0"}'
+                        title="Keyboard: 4">0.4x</a>
+                </div>
+            </div>
+            <div id="main-control">
+                <div id="backward" class="control-btn" data-toggle="tooltip" data-placement="bottom" data-delay='{"show":"1000", "hide":"0"}'
+                    title="Keyboard: Left Arrow">
+                    <i class="material-icons">skip_previous</i>
+                </div>
+                <div id="play_pause" class="control-btn" data-toggle="tooltip" data-placement="bottom" data-delay='{"show":"1000", "hide":"0"}'
+                    title="Keyboard: Spacebar">
+                    <i class="material-icons">pause</i>
+                </div>
+                <div id="forward" class="control-btn" data-toggle="tooltip" data-placement="bottom" data-delay='{"show":"1000", "hide":"0"}'
+                    title="Keyboard: Right Arrow">
+                    <i class="material-icons">skip_next</i>
+                </div>
+            </div>
+            <div id="mute" class="control-btn" data-toggle="tooltip" data-placement="bottom" data-delay='{"show":"1000", "hide":"0"}'
+                title="Keyboard: M">
+                <i class="material-icons">volume_off</i>
+            </div>
+        </div>
+
+        <div id="recording-panel-wrapper">
+            <div id="record-lesson" data-toggle="tooltip" data-placement="bottom" data-delay='{"show":"1000", "hide":"0"}' title="Keyboard: R">
+                Record Lesson
+            </div>
+            <div id="origin">
+                Exit Lesson
+            </div>
+            <div id="record">
+                <div id="red-dot"></div>
+                <div id="stopper"></div>
+            </div>
+        </div>
+
+        <a id="lessons-toggle">
+            <i class="material-icons">menu</i>
+        </a>
+    </nav>
+
+    <div id="wrapper">
+
+        <div id="lessons-wrapper">
+            <div id="lessons">
+                <div class="title">Lessons
+                    <div id="edit-toggle">
+                        <i class="material-icons" style="font-size: 20px;">settings_application</i>
+                    </div>
+                </div>
+                <hr style="background: white;">
+                <div id="interstellar-lessons"></div>
+                <div id="darknight-lessons"></div>
+                <div id="gladiator-lessons"></div>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Main player -->
+                        <div id="video-container">
+                            <div class="progress-bar">
+                                <div class="progress">
+                                    <div class="progress-inner">
+                                        <span class="progress-value"></span>
+                                    </div>
+                                </div>
+                                <div class="buffer"></div>
+                                <div id="lesson-bar"></div>
+                            </div>
+                            <video preload="none">
+                                <source src="" type="video/mp4">
+                            </video>
+                            <div id="anchors">
+                                <div id="gladiator-anchors">
+                                    <div id="gladiator-intro" class="anchor">Intro</div>
+                                    <div id="gladiator-b1" class="anchor">Bridge</div>
+                                    <div id="gladiator-chorus" class="anchor">Chorus</div>
+                                    <div id="gladiator-b2" class="anchor">Bridge</div>
+                                    <div id="gladiator-b3" class="anchor">Bridge</div>
+                                    <div id="gladiator-pre-coda" class="anchor">Pre-Coda</div>
+                                    <div id="gladiator-coda" class="anchor">Coda</div>
+                                </div>
+
+                                <div id="darknight-anchors">
+                                    <div id="darknight-intro" class="anchor">Intro</div>
+                                    <div id="darknight-b1" class="anchor">Bridge</div>
+                                    <div id="darknight-chorus" class="anchor">Chorus</div>
+                                    <div id="darknight-b2" class="anchor">Bridge</div>
+                                    <div id="darknight-b3" class="anchor">Bridge</div>
+                                    <div id="darknight-pre-coda" class="anchor">Pre-Coda</div>
+                                    <div id="darknight-coda" class="anchor">Coda</div>
+                                </div>
+
+                                <div id="interstellar-anchors">
+                                    <div id="interstellar-intro" class="anchor">Intro</div>
+                                    <div id="interstellar-b1" class="anchor">Bridge</div>
+                                    <div id="interstellar-b2" class="anchor">Bridge</div>
+                                    <div id="interstellar-pre-chorus" class="anchor">Pre-Chorus</div>
+                                    <div id="interstellar-chorus" class="anchor">Chorus</div>
+                                    <div id="interstellar-b3" class="anchor">Bridge</div>
+                                    <div id="interstellar-pre-coda" class="anchor">Pre-Coda</div>
+                                    <div id="interstellar-coda" class="anchor">Coda</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+
+
     <script src="./js/jquery-3.3.1.min.js"></script>
-    <script src="./js/jquery-ui.min.js"></script>
-    <script src="https://unpkg.com/vexflow/releases/vexflow-min.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/muuri/0.5.3/muuri.min.js"></script> -->
-    <script src="./js/active.js"></script>
+    <script src="./js/owl.carousel.min.js"></script>
+    <script src="./js/popper.min.js"></script>
     <script src="./js/video.js"></script>
-    <script src="http://www.verovio.org/javascript/latest/verovio-toolkit.js"></script>
-    <script src="./js/piano.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
     <script src="./js/main.js"></script>
+
 
     <!-- Icons -->
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
     <script>
-            feather.replace();
+        feather.replace();
     </script>
 
 </body>
