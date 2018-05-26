@@ -1,70 +1,151 @@
 $(document).ready(function () {
 
-	activeClasses();
-	initVideoPlayer();
-	initControls();
-	initKeyboard();
+    $("#navbar").hide();
+    $("#wrapper").hide();
+    $("#front-page").show();
 
-	//create piano with 3 octaves, starting at C4 (lowest key)
-	//shows labels and octave shift buttons
-	var keyboardHTML = htmlForKeyboardWithOctaves(3, octaves.C4, true, true)
-	//render the keyboard in the div
-	$("#keyboardContainer").html(keyboardHTML)
-	//when keys are pressed updatePreview() is called
-	bindKeysToFunction(updatePreviewWithNote)
-	//when the clef is changed updatePreviewWithClef() is called
-	bindClefSelectionToFunction(updatePreviewWithClef)
-	//set the default clef to G4
-	setSelectedClef(clefs.G4)
+    $('.owl-carousel').owlCarousel({
+        center: true,
+        items: 1,
+        loop: true,
+        margin: 50,
+        responsive: {
+            600: {
+                items: 2
+            }
+        }
+    });
 
+    $('.nextItem').click(function () {
+        $(".owl-carousel").trigger('next.owl.carousel', [300]);
+    });
 
-	//this stores all keyboard input
-	var plaineEasieCodes = []
-	var selectedClef = clefs.G4
+    $('.prevItem').click(function () {
+        $(".owl-carousel").trigger('prev.owl.carousel', [300]);
+    });
 
-	//this is called whenever a piano key is pressed
-	function updatePreviewWithNote(sender, paeNote) {
-		console.log("key pressed is " + paeNote)
-		plaineEasieCodes.push(paeNote)
-		updateNotesSVG()
-	}
+    $(".owl-carousel .poster-wrapper").on("click", function () {
+        $("#front-page").hide();
+        $("#navbar").show();
+        $("#wrapper").show();
+        $(".anchor").show();
+        $('#play_pause').find('.material-icons').html('pause');
 
-	//this is called when the user changes the clef for display
-	function updatePreviewWithClef(sender, clef) {
-		console.log("clef changed to " + clef)
-		selectedClef = clef
-		updateNotesSVG()
-	}
+        looping = false;
+        lessonStart = 0;
+        lessonEnd = 0;
+        var alt = $(this).children("img").attr("alt");
 
-	function updateNotesSVG() {
-		//render the notes to an SVG using the Verovio tookit
-		//width of the svg is 800px and note scaling 50%
-		var notesSVG = svgNotesForPlaineEasieCode(plaineEasieCodes.join(""), selectedClef, 800, 50)
-		//insert thes SVG code in our div
-		var svgContainerDiv = $('#svgNotesContainer')
-		svgContainerDiv.html(notesSVG)
-	}
+        if (alt == "interstellar") {
+            video.attr("src", "./videos/interstellar.mp4");
+            $("#videos").find(".selected").removeClass("selected");
+            $("#interstellar-poster").addClass("selected");
+            $('#darknight-lessons').hide();
+            $('#imitation-lessons').hide();
+            $('#gladiator-lessons').hide();
+            $('#interstellar-lessons').show();
+            $('#gladiator-anchors').hide();
+            $('#darknight-anchors').hide();
+            $('#interstellar-anchors').show();
+            currentVideo = "interstellar";
+        }
+        if (alt == "darknight") {
+            video.attr("src", "./videos/the_dark_night.mp4");
+            $("#videos").find(".selected").removeClass("selected");
+            $("#darknight-poster").addClass("selected");
+            $('#gladiator-lessons').hide();
+            $('#imitation-lessons').hide();
+            $('#interstellar-lessons').hide();
+            $('#darknight-lessons').show();
+            $('#gladiator-anchors').hide();
+            $('#darknight-anchors').show();
+            $('#interstellar-anchors').hide();
+            currentVideo = "darknight";
+        }
+        if (alt == "gladiator") {
+            video.attr("src", "./videos/gladiator.mp4");
+            $("#videos").find(".selected").removeClass("selected");
+            $("#gladiator-poster").addClass("selected");
+            $('#darknight-lessons').hide();
+            $('#imitation-lessons').hide();
+            $('#interstellar-lessons').hide();
+            $('#gladiator-lessons').show();
+            $('#gladiator-anchors').show();
+            $('#darknight-anchors').hide();
+            $('#interstellar-anchors').hide();
+            currentVideo = "gladiator";
+        }
+        video.attr("autoplay", '');
+    });
 
-	$('#home_btn').on('click', function (e) {
-		e.preventDefault();
-		$('.title').html('Library');
-		$('#content').children().show();
-		$('#keyboardContainer').hide();
-		$('#svgNotesContainer').hide();
-	});
+    $("#back-btn").click(function (e) {
+        e.preventDefault();
+        video[0].pause();
+        $("#navbar").hide();
+        $("#wrapper").hide();
+        $("#front-page").show();
+        $("#record-lesson").show();
+        $("#origin").hide();
+        $(".lesson-wrapper").removeClass("lesson-selected");
+        looping = false;
+        if (recording) {
+            toggleRecord();
+        }
+        originalDuration = 0;
+        $(".wrapper-edit").hide();
+        $("#lesson-bar").hide();
+    });
 
-	$('#classroom_btn').on('click', function (e) {
-		e.preventDefault();
-		$('.title').html('Lessons');
-		$('#content').children().hide();
-		$('#keyboardContainer').show();
-		$('#svgNotesContainer').show();
-	});
+    $("#lessons-toggle").click(function (e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled-right");
+    });
 
-	$('interstellar-lessons').hide();
-	$('imitation-lessons').hide();
-	$('darknight-lessons').hide();
-	$('gladiator-lessons').hide();
-	$('#keyboardContainer').hide();
-	$('#svgNotesContainer').hide();
+    initVideoPlayer();
+    initKeyboard();
+    initControls();
+
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+
+    $(".dropdown-item").on("click", function() {
+        var speed = $(this).html();
+        $("#dropdownPlayback").html(speed);
+    });
+
+    $(".anchor").on("click", function() {
+        $(".anchor").removeClass("anchor-active");
+        $(this).addClass("anchor-active");
+        video[0].pause();
+        $('#play_pause').find('.material-icons').html('play_arrow');
+    });
+
+    $('interstellar-lessons').hide();
+    $('darknight-lessons').hide();
+    $('gladiator-lessons').hide();
+    $(".anchor").hide();
+    $("#origin").hide();
+
+    $("#origin").on("click", function () {
+        $("#record-lesson").show();
+        $("#lesson-bar").hide();
+        $("#origin").hide();
+        $(".lesson-wrapper").removeClass("lesson-selected");
+        looping = false;
+        video.attr("src", "./videos/" + currentVideo + ".mp4");
+        $(".wrapper-edit").hide();
+    });
+
+    $("#edit-toggle").on("click", function() {
+        var edit = $(this);
+        if (edit.hasClass('edit-mode')) {
+            edit.removeClass('edit-mode');
+            $(".wrapper-edit").hide();
+        } else {
+            edit.addClass('edit-mode');
+            $(".wrapper-edit").show();
+        }
+    })
+
 });
